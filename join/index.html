@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>个人主页</title>
+<link rel="stylesheet" href="./resource/js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./resource/css/amazeui.min.css">
+<link rel="stylesheet" href="./resource/css/amazeui.cropper.css">
+<link rel="stylesheet" href="./resource/css/custom_up_img.css">
+<link rel="stylesheet" type="text/css" href="./resource/css/个人资料.css">
+<link rel="stylesheet" href="./resource/css/dcalendar.picker.css" />
+<style type="text/css">
+
+
+
+  .up-img-cover {
+	width: 30px;
+	height: 30px;
+  }
+
+  .up-img-cover img {
+	width: 100%;
+  }
+</style>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="css/base.css" rel="stylesheet" type="text/css"/>
+<link href="css/home.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div class="index-page">
+	<div class="logo">
+		<img src="logo.png" alt="" class="joim">
+		<img src="word.png" alt="" class="word">
+	</div>
+	<div class="solution-more">
+		<div class="solution-more-slide">
+			<div class="center">
+				<div class="hd">
+					<ul>
+						<li class="item-1 on">
+							<i></i>
+							<div class="text">
+								<h3>个人资料</h3>
+							</div>
+						</li>
+						<li class="item-2">
+							<i></i>
+							<div class="text">
+								<h3>我的收藏</h3>
+							</div>
+						</li>
+						<li class="item-3">
+							<i></i>
+							<div class="text">
+								<h3>我关注的人/粉丝</h3>
+							</div>
+						</li>
+						<li class="item-4">
+							<i></i>
+							<div class="text">
+								<h3>我的博客</h3>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="bdd">
+					
+				
+				<ul class="bd">
+					<li class="item-1" style=" display: list-item;">
+						<div class="wrap">
+							
+								
+							
+							<div class="mao-contain">
+								<div class="headlog">
+								  <div class="mao-box">
+									<div class="mao-title">头像</div>
+									<div class="old">
+									  <img class="am-circle" alt="点击图片上传" src="./resource/img/img.png">
+									</div>
+									<div class="edit">
+									  <a href="#" id="up-img-touch"></a>
+									</div>
+								  </div>
+								</div>
+							
+							
+							
+								<!--图片上传框-->
+								<div class="am-modal am-modal-no-btn up-frame-bj pic " tabindex="-1" id="doc-modal-1">
+								  <div class="am-modal-dialog up-frame-parent up-frame-radius">
+									<div class="am-modal-hd up-frame-header">
+									  <label>修改头像</label>
+									  <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close style="font-size: 2rem;">&times;</a>
+									</div>
+									<div class="am-modal-bd  up-frame-body">
+									  <div class="am-g am-fl">
+										<div class="am-form-group am-form-file">
+										  <div class="am-fl">
+											<button type="button" class="am-btn am-btn-default am-btn-sm">
+											  <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+										  </div>
+										  <input type="file" id="inputImage">
+										</div>
+									  </div>
+									  <div class="am-g am-fl">
+										<div class="up-pre-before up-frame-radius">
+										  <img alt="" src="" id="image">
+										</div>
+										<div class="up-pre-after up-frame-radius">
+										</div>
+									  </div>
+									  <div class="am-g am-fl d3">
+										<div class="up-control-btns">
+										  <span class="am-icon-rotate-left" onclick="rotateimgleft()"></span>
+										  <span class="am-icon-rotate-right" onClick="rotateimgright()"></span>
+										  <span class="am-icon-check" id="up-btn-ok" url="/admin/user/upload.action"></span>
+										</div>
+									  </div>
+							
+									</div>
+								  </div>
+								</div>
+							
+								<!--加载框-->
+								<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+								  <div class="am-modal-dialog">
+									<div class="am-modal-hd">正在上传...</div>
+									<div class="am-modal-bd">
+									  <span class="am-icon-spinner am-icon-spin"></span>
+									</div>
+								  </div>
+								</div>
+							
+							
+								<!--警告框-->
+								<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+								  <div class="am-modal-dialog">
+									<div class="am-modal-hd">信息</div>
+									<div class="am-modal-bd" id="alert_content">
+									  成功了
+									</div>
+									<div class="am-modal-footer">
+									  <span class="am-modal-btn">确定</span>
+									</div>
+								  </div>
+								</div>
+							
+							
+							
+							
+							
+							
+								<div class="signature">
+								  <div class="mao-box">
+									<div class="mao-title">个性签名</div>
+									<div class="old">
+									  <span>想念博硕路的肯德基</span>
+									</div>
+									<div class="edit">
+									  <a href="#" data-am-modal="{target: '#doc-modal-6'}"></a>
+									  <div class="am-modal am-modal-no-btn  up-frame-bj " tabindex="-1" id="doc-modal-6">
+										<div class="am-modal-dialog up-frame-parent up-frame-radius">
+										  <div class="am-modal-hd up-frame-header">
+											<label>修改个性签名</label>
+											<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+										  </div>
+										  <div class="am-modal-bd">
+											<textarea class="am-modal-prompt-input" maxlength="30" placeholder="请输入个性签名（字数不能超过30字）" rows="2"
+											  cols="15"></textarea>
+							
+											<!-- <input type="text" class="am-modal-prompt-input" maxlength="10" placeholder="请输入昵称（字数不能超过10字）"> -->
+											<div class="am-g selectBtn">
+											  <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+											  <span class="am-modal-btn" data-am-modal-confirm>保存</span>
+											</div>
+										  </div>
+							
+										</div>
+									  </div>
+							
+									</div>
+								  </div>
+								</div>
+								<div class="ID">
+								  <div class="mao-box">
+									<div class="mao-title">ID</div>
+									<div class="old">
+									  <span>2018010996</span>
+									</div>
+									<div class="edit">
+									</div>
+								  </div>
+								</div>
+								<div class="password">
+								  <div class="mao-box">
+									<div class="mao-title">密码</div>
+									<div class="old">
+									  <span>******</span>
+									</div>
+									<div class="edit">
+									  <a href="#" data-am-modal="{target: '#doc-modal-5'}"></a>
+							
+									  <div class="am-modal am-modal-no-btn  up-frame-bj " tabindex="-1" id="doc-modal-5">
+										<div class="am-modal-dialog up-frame-parent up-frame-radius">
+										  <div class="am-modal-hd up-frame-header">
+											<label>修改密码</label>
+											<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+										  </div>
+										  <div class="am-modal-bd">
+							
+											<input type="password" class="am-modal-prompt-input pw" maxlength="10" placeholder="请输入原密码">
+											<div class="newpw1">
+											  <input type="password" class="am-modal-prompt-input pw" maxlength="10" placeholder="请输入新密码"
+												id="newpw1">
+											  <div class="floatTip1">
+												<div class="floatTip-wrap">
+												  <div class="tip">长度为8-16个字符，区分大小写，包含三种类型</div>
+												</div>
+											  </div>
+											  <span class="error error1"></span>
+											</div>
+											<div class="newpw2">
+											  <input type="password" class="am-modal-prompt-input pw" maxlength="10" placeholder="请再次输入新密码"
+												id="newpw2">
+											  <span class="error error2"></span>
+											</div>
+							
+							
+											<div class="am-g selectBtn">
+											  <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+											  <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+											</div>
+										  </div>
+							
+										</div>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							
+								<div class="information-box">
+								  <div class="nickname">
+									<div class="mao-box">
+									  <div class="mao-title">昵称</div>
+									  <div class="old">
+										<span>9</span>
+									  </div>
+									  <div class="edit">
+										<a href="#" data-am-modal="{target: '#doc-modal-2'}"></a>
+							
+										<div class="am-modal am-modal-no-btn  up-frame-bj " tabindex="-1" id="doc-modal-2">
+										  <div class="am-modal-dialog up-frame-parent up-frame-radius">
+											<div class="am-modal-hd up-frame-header">
+											  <label>修改昵称</label>
+											  <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+											</div>
+											<div class="am-modal-bd">
+							
+							
+											  <input type="text" class="am-modal-prompt-input" maxlength="10" placeholder="请输入昵称（字数不能超过10字）">
+											  <div class="am-g selectBtn">
+												<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+												<span class="am-modal-btn" data-am-modal-confirm>保存</span>
+											  </div>
+											</div>
+							
+										  </div>
+										</div>
+									  </div>
+									</div>
+								  </div>
+								  <div class="gender">
+									<div class="mao-box">
+									  <div class="mao-title">性别</div>
+									  <div class="old">
+										<span>男</span>
+									  </div>
+									  <div class="edit">
+										<a href="#" data-am-modal="{target: '#doc-modal-3'}"></a>
+							
+										<div class="am-modal am-modal-no-btn  up-frame-bj " tabindex="-1" id="doc-modal-3">
+										  <div class="am-modal-dialog up-frame-parent up-frame-radius">
+											<div class="am-modal-hd up-frame-header">
+											  <label>修改性别</label>
+											  <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+											</div>
+											<div class="am-modal-bd">
+											  <div class="am-form-group">
+												<select id="doc-select-1">
+												  <option value="option1">请选择性别</option>
+												  <option value="option2">男</option>
+												  <option value="option3">女</option>
+												</select>
+												<span class="am-form-caret"></span>
+											  </div>
+							
+											  <div class="am-g selectBtn">
+												<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+												<span class="am-modal-btn" data-am-modal-confirm>保存</span>
+											  </div>
+											</div>
+							
+										  </div>
+										</div>
+									  </div>
+									</div>
+								  </div>
+								  <div class="birthday">
+									<div class="mao-box">
+									  <div class="mao-title">生日</div>
+									  <div class="old">
+										<span>2000-07-13</span>
+									  </div>
+									  <div class="edit">
+										<a href="#" data-am-modal="{target: '#doc-modal-4'}"></a>
+							
+										<div class="am-modal am-modal-no-btn  up-frame-bj " tabindex="-1" id="doc-modal-4">
+										  <div class="am-modal-dialog up-frame-parent up-frame-radius">
+											<div class="am-modal-hd up-frame-header">
+											  <label>修改生日</label>
+											  <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+											</div>
+							
+							
+											<div class="am-modal-bd">
+							
+											  <div class="container">
+												<input id='mydatepicker2' type='text' placeholder="请选择生日日期" />
+											  </div>
+											  <div class="am-g selectBtn">
+												<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+												<span class="am-modal-btn" data-am-modal-confirm>保存</span>
+											  </div>
+											</div>
+							
+										  </div>
+										</div>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							  </div>
+
+
+
+						</div>
+					</li>
+
+					<li class="item-2" style="display: none;">
+						<div class="wrap">
+							
+							<div class="right_container">
+								<div class="yzywrap">
+
+									<!--我的收藏tab-->
+								    <div class="tab_name" id="tab_name_id">
+								        <a href="#icreated" class="mycreated active">我创建的收藏夹</a>
+								        <a href="#ifollowed" class="myfollowed">我关注的收藏夹</a>
+								        <a href="#iadd" class="myadd">
+								        	<span>+</span>
+								        	新建收藏夹
+								        </a>
+								    </div>
+
+								    <div class="tab_name tab_hide" id="tab_name_second">
+								    	<a href="#icreated" class="mycreated active">
+								    	 <  返回我的收藏夹列表
+								    	</a>		    	
+								    </div>	
+
+									<!--我的收藏main-->
+								    <div class="sh" id="sh_main">
+
+
+								    	<!--我创建的收藏夹-->
+								        <div id="icreated">
+								        	<div class="inull"></div>
+								        	<ul>
+								        		<li class="icreated_li">	
+								        			<span class="collection_dir">
+								        				<em>默认收藏夹</em>
+								        			</span>
+								        			<span class="collection_info">
+								        				<b class="line">4条内容</b>
+								        				<b>0人关注</b>
+								        			</span>
+								        			<a class="collect_see" href="#icollect">...</a>
+								        			<ul class="moremenu">
+								        				<li class="moremenu_li">编辑信息</li>
+								        				<li class="moremenu_li">删除</li>
+								        			</ul>	        			 
+								        			 
+								        		</li>
+
+								        		<li class="icreated_li" DR_drag="1" DR_replace="1">
+								        			<div class="roll">
+								        				<img src="img/yzy/rolling.png">
+								        			</div>
+								        			<span class="collection_dir" >
+								        				<em>yzy收藏夹</em>
+								        			</span>
+								        			<span class="collection_info" >
+								        				<b class="line" >0条内容</b>
+								        				<b>0人关注</b>
+								        			</span>
+								        			<a class="collect_see">...</a>
+								        			<ul class="moremenu">
+								        				<li class="moremenu_li">编辑信息</li>
+								        				<li class="moremenu_li">删除</li>
+								        			</ul>
+								        			
+								        		</li>
+
+								        		<li class=" icreated_li" DR_drag="1" DR_replace="1">
+								        			<div class="roll">
+								        				<img src="img/yzy/rolling.png">
+								        			</div>
+								        			<span class="collection_dir">
+								        				<em>mxx收藏夹</em>
+								        			</span>
+								        			<span class="collection_info">
+								        				<b class="line">99条内容</b>
+								        				<b>3人关注</b>
+								        			</span>
+								        			<a class="collect_see">...</a>
+								        			<ul class="moremenu">
+								        				<li class="moremenu_li">编辑信息</li>
+								        				<li class="moremenu_li">删除</li>
+								        			</ul>
+								        			 
+								        		</li>
+
+								        		<li class="icreated_li" DR_drag="1" DR_replace="1">
+								        			<div class="roll">
+								        				<img src="img/yzy/rolling.png">
+								        			</div>
+								        			<span class="collection_dir">
+								        				<em>myt收藏夹</em>
+								        			</span>
+								        			<span class="collection_info">
+								        				<b class="line">3条内容</b>
+								        				<b>9人关注</b>
+								        			</span>
+								        			<a class="collect_see">...</a>
+								        			<ul class="moremenu">
+								        				<li class="moremenu_li">编辑信息</li>
+								        				<li class="moremenu_li">删除</li>
+								        			</ul>
+								        			
+								        		</li>
+
+								        	</ul>
+								        </div>
+										
+								        <!--我关注的收藏夹（里面的css可能会有一点问题）-->
+								        <div id="ifollowed">
+								        	<div class="inull"></div>
+								        	<img src="img/yzy/nothing.png" style="width:100%;height: 100%">
+								        </div>
+
+								        <!--新建收藏夹-->
+										<div id="iadd">
+											<div class="inew_title">
+												<span>新建文件夹</span>
+											</div>
+											<div class="inew_main">
+												<form>
+
+													<div class="form_control">
+														<label class="form_label">标题</label>
+														<div class="form_item">
+															<input type="text" autocomplete="off" placeholder="请填写收藏夹的名称">
+														</div>
+													</div>
+
+													<div class="form_control">
+														<label class="form_label">描述（选填）</label> 
+														<div class="form_item">
+															<textarea autocomplete="off" rows="4" placeholder="请输入描述内容"></textarea>
+														</div>
+													</div>
+
+													<div class="form_control">
+														
+														<div class="form_checkbox">
+															<span class="form_span ">
+																<label>
+																	<span class="formcheck">
+																		<input name="only" type="radio" value="" />
+																	</span>
+																	<span class="checkwords">
+																		<em>公开</em>
+																		所有人可见
+																	</span>
+																</label>
+															</span>
+														
+															<span class="form_span ">
+																<label>
+																	<span class="formcheck">
+																		<input name="only" type="radio" value="" />
+																	</span>
+																	<span class="checkwords">
+																		<em>私密</em>
+																		只有你可以查看这个收藏夹
+																	</span>
+																	
+																</label>
+															</span>
+														</div>
+													</div>
+
+												</form>
+
+											</div>
+											<div class="inew_option">
+												<div class="no_btn">取消</div>
+											</div>
+												<div class="submit_btn">提交</div>				
+										</div>
+
+										<!--收藏夹里面-->
+										<div id="icollect">
+											<div class="inull"></div>
+											<ul>
+												<li class="icollect_li">
+													<span class="collection_font">默认收藏夹</span>
+													<span class="collection_detail">
+														<p class="collection_detail_p">收藏夹描述：qq_43800030的默认收藏夹</p>
+														<b class="line1">
+															2条内容 |
+														</b>
+														<b class="line1">
+															0人关注 |
+														</b>
+														<em class="line2">
+															编辑 |
+														</em>
+														<em class="line2">
+															清除 |
+														</em>
+														<em class="line2">
+															内容批量管理
+														</em>
+
+													</span>
+													<ul class="collection_sublist">
+														<li class="sublist">
+															<div class="sublist_con">
+																<span>
+																	<span class="sublist_dir">
+																		<a> Javascript包含哪些内容</a>
+																	</span>
+																	<a class="sublist_cancel">
+																		取消收藏
+																	</a>
+																	
+																</span>
+																<br><br>
+																<span class="sublist_info">
+																	<em class="line1"></em>
+																	<b class="line3">
+																		| 2019-03-17 00:30
+																	</b>
+																	
+																</span>
+															</div>
+															
+														</li>
+
+														<li class="sublist">
+															<div class="sublist_con">
+																<span>
+																	<span class="sublist_dir">
+																		<a> 演员的自我修养 </a>
+																	</span>
+																	<a class="sublist_cancel">
+																		取消收藏
+																	</a>
+																	
+																</span>
+																<br><br>
+																<span class="sublist_info">
+																	<em class="line1"></em>
+																	<b class="line3">
+																		| 2019-03-21 13:27
+																	</b>
+																	
+																</span>
+															</div>
+															
+														</li>
+
+													</ul>	
+												</li>
+												
+											</ul>
+										</div>
+
+								    </div>
+
+								</div>
+							</div>
+							<div class="fullmask"></div>
+						</div>
+					</li>
+
+					<li class="item-3" style="display: none;">
+						<div class="wrap">
+							<div class="right_container">
+								<div class="yzywrap">
+
+									<!--我的收藏tab-->
+								    <div class="tab_name">
+								        <a href="#follow_list" class="myfollow active">我关注的人</a>
+								        <a href="#fans_list" class="myfans">我的粉丝</a>
+								    </div>	
+
+								    <div class="sh">
+								    	<div id="follow_list">
+								    		<div class="total">共<span>1</span>人</div>
+											<ul>
+												<li>
+													<a class="fans" >
+														<img class="fans_header" src="img/yzy/mxx.JPG">
+													</a>
+													<a class="nick" >
+														小确幸
+													</a>
+													<a class="watch_btn1 " >
+														已关注
+													</a>
+													<a class="watch_btn2" >
+														+关注
+													</a>
+												</li>						
+											</ul>
+								    	</div>
+								    	<div id="fans_list">
+								    		<div class="total">共<span>1</span>人</div>
+											<ul>
+												<li>
+													<a class="fans" >
+														<img class="fans_header" src="img/yzy/myt.png">
+													</a>
+													<a class="nick" >
+														坠落星河
+													</a>
+													<a class="watch_btn1 " >
+														>互关<
+													</a>
+													<a class="watch_btn2" >
+														取消互关
+													</a>
+												</li>						
+											</ul>
+								    		
+								    	</div>
+								    	
+								    </div>
+								</div>
+							</div>
+							
+		
+		    	
+		    			</div>
+								
+					</li>
+					<li class="item-4" style="display: none;">
+						<div class="wrap">
+							
+								<div class="le">
+									<h2>我 的 博 客</h2>
+									<h3><a>＋新建博客</a></h3>
+								</div>
+								<div class="re">
+									<div class="search d5">
+										<form>
+										  <input type="text" placeholder="搜索从这里开始...">
+										  <button type="submit"></button>
+										</form>
+									  </div>
+									  按时间
+									  <span class="switch_box box_2">
+										<input type="checkbox" class="switch_2">
+									  </span>
+									按热度 | 只看原创
+									<div class="switch_box box_1">
+										<input type="checkbox" class="switch_1">
+									</div>
+									
+								</div>
+								
+								
+								<main>
+										<div class="blogtab">
+										   <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+											   <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+											   <div class="box">
+												<!--父级导航-->
+												<ul class="menu">
+													
+													<li>
+														<a href="#">编辑 ▼</a>
+														<ul class="sub-menu"><!--子级导航-->
+															<li>
+															<a href="#">修改博客</a>
+															</li>
+															<li>
+															<a href="#">删除博客</a>
+															</li>
+															
+														</ul>
+													</li>
+													  
+												</ul>
+											</div>
+											   <span class="blogpic"><a href="/" title=""><img src="1.jpg" alt=""></a></span>
+											   <p class="blogtext">如图，要实现上图效输出。思路已打开，样式调用就可以多样化啦！.图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，啦！.！... </p>
+											   <div class="bloginfo">
+												 <ul> 
+												   <li class="timer"><a>2018-5-13</a></li>
+												   <li class="view"><a><span class="glyphicon glyphicon-eye-open"></span><span>34567</span></a> </li>
+												   <li class="like"><a><span class="glyphicon glyphicon-thumbs-up"></span><span>34567</span></a></li>
+												   <li class="comment"><a><span class="glyphicon glyphicon-edit"></span><span>457</span></a></li>
+												 </ul>
+											   </div>
+											 </div>
+										   </div>
+									   </main>
+								
+								
+							
+						</div>
+					</li>
+				</ul>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="./resource/js/jquery-1.12.4.js"></script>
+							<script src="./resource/js/dcalendar.picker.js"></script>
+							<script>
+							  window.jQuery || document.write('<script src="./resource/js/jquery-1.11.0.min.js"><\/script>')
+							</script>
+							<script src="./resource/js/个人资料.js"></script>
+							<script src="./resource/js/amazeui.min.js" charset="utf-8"></script>
+							<script src="./resource/js/cropper.min.js" charset="utf-8"></script>
+							<script src="./resource/js/custom_up_img.js" charset="utf-8"></script>
+							
+							<script type="text/javascript">
+							  $('#mydatepicker2').dcalendarpicker({
+								format: 'yyyy-mm-dd'
+							  });
+							</script>
+<script type="text/javascript" src="js/SuperSlide.js"></script>
+<!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<script type="text/javascript">
+	$(".solution-more-slide").slide({
+		effect: 'fold'
+	});
+	//hover
+</script>
+<script type="text/javascript" src="js/yzy.js" ></script>
+
+</body>
+</html>
